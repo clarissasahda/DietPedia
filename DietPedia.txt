@@ -1,0 +1,26 @@
+Topik
+Topik atau judul yang kami angkat untuk dijadikan sebagai proyek tugas akhir adalah aplikasi penyedia informasi diet sehat.
+Latar Belakang
+	Dewasa ini gaya hidup sehat sering dilupakan karena kesibukan duniawi yang membuat masyarakat lalai bahkan malas menjaga pola hidup sehat. Kelalaian ini bila dibiarkan akan menjadi kebiasaan yang buruk seperti malas berolahraga, dan mengonsumsi makanan sehat. Kebiasaan buruk tersebut akan menumpuk penyakit, penurunan fungsi organ tubuh bila diteruskan, dan yang paling umum terjadi adalah obesitas. Berdasarkan data Riskesdas 2018 menunjukkan angka 21,8 persen untuk obesitas di Indonesia. Angka itu terus beranjak naik sejak Riskesdas 2007 sebesar 10,5 persen dan 14,8 persen pada Riskesdas 2013. Faktor utama yang membuat masyarakat lalai dalam menjaga pola sehat adalah kurangnya pengetahuan mengenai diet sehat dan kurangnya pengingat dari lingkungan sekitar.
+	Permasalahan tersebut mendasari ide dari kelompok kami untuk membuat aplikasi penyedia informasi diet sehat “DietPedia”. Aplikasi ini akan membantu masyarakat yang memiliki kesibukan yang padat untuk mendapatkan informasi serta pengingat diet sehat. Informasi tersebut akan disediakan dalam bentuk paket diet sehat yang memuat informasi berupa kebutuhan makanan dan kalori, serta jenis olahraga yang disesuaikan dengan target penurunan berat badan pengguna. Adanya aplikasi DietPedia ini diharapkan membantu manusia modern dalam menjaga pola hidup sehatnya.
+Fitur
+	Fitur yang kami tawarkan dalam aplikasi DietPedia
+1.	Register
+Merupakan fitur utuk registrasi sebagai pengguna dari aplikasi. Pada fitur ini pengguna harus menginputkan data :
+- Nama
+- Email
+- Password
+- Username
+
+2.	Login
+Merupakan fitur untuk masuk ke akun yang sudah melakukan registrasi. Pada fitur ini pengguna harus menginputkan data :
+- Username
+- Password
+
+3.	Target
+Merupakan fitur yang disediakan sistem untuk pengguna mencatat jenis kelamin, tinggi badan, berat badan awal, dan berat badan impian, guna dari fitur ini adalah untuk mendapatkan nilai BMR sehingga sistem dapat merekomendasikan beberapa paket diet yang sesuai
+
+4.	Paket Diet
+Merupakan fitur yang menyajikan solusi paket diet selama satu bulan penuh. Di dalamnya terdapat daftar makanan beserta jumlah kalori dan jenis olahraga yang disesuaikan dengan BMR yang diperoleh dari fitur Target. 
+5.	Pengingat
+Merupakan fitur yang digunakan untuk menyetel alarm pengingat waktu makan dan pengingat waktu olahraga yang telah disesuaikan dengan paket diet yang telah dipilih oleh pengguna.
