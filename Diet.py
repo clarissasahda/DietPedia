@@ -32,6 +32,25 @@ class Pengguna():
             query = "update daftar set JenisKelamin = '{}' where idPengguna = '{}'".format(jenisKelaminBaru, self.idPengguna)
             cursor.execute(query)
             conn.commit()
+        elif ubah==4:
+            beratBadanAwalBaru=str(input("Masukkan berat badan awal baru : "))
+            query = "update daftar set BeratBadanAwal = '{}' where idPengguna = '{}'".format(beratBadanAwalBaru, self.idPengguna)
+            cursor.execute(query)
+            conn.commit()
+        elif ubah==5:
+            beratBadanImpianBaru=str(input("Masukkan berat badan tujuan baru : "))
+            query = "update daftar set BeratBadanImpian = '{}' where idPengguna = '{}'".format(beratBadanImpianBaru, self.idPengguna)
+            cursor.execute(query)
+            conn.commit()
+        elif ubah==6:
+            passwordBaru=str(input("Masukkan password baru : "))
+            query = "update daftar set Password = '{}' where idPengguna = '{}'".format(passwordBaru, self.idPengguna)
+            cursor.execute(query)
+            conn.commit()
+        else :
+            print("Menu yang anda pilih tidak tersedia")
+
+
 
 #menambahkan data diri pengguna
 def Registrasi():
@@ -73,6 +92,7 @@ def Beranda():
             # PaketDiet()
         elif main==2:
             pass
+            
             # target()
         elif main==3:
             dataAkun=cursor.fetchall()[0]
@@ -82,7 +102,7 @@ def Beranda():
             menuAkun=int(input("1. Ubah data \n2. Kembali \nPilih Menu : "))
             print()
             if menuAkun==1:
-                ubah=int(input("1. Nama \n2. Usia \n3. Jenis kelamin \n4. Berat badan saat ini \n5. Berat badan tujuan \n6. Email \n7. password \nPilih data yang akan diubah : "))
+                ubah=int(input("1. Nama \n2. Usia \n3. Jenis kelamin \n4. Berat badan saat ini \n5. Berat badan tujuan \n6. Password \nPilih data yang akan diubah : "))
                 user.ubahData(ubah)
             elif menuAkun==2:
                 Beranda()
