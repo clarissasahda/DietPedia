@@ -2,100 +2,86 @@ import mysql.connector
 conn = mysql.connector.connect(host="localhost",port=3306,user="root",password="",database="dietpedia")
 cursor=conn.cursor()
 
-def aksesAdmin():
-    while True:
-        query = "Select * From paketdiet"
+class Admin():
+    def __init__(self, idMakan, idOlahraga, namaMakanan, namaOlahraga, jumlahKalori, kaloriTerbakar):
+        self.idMakan=idMakan
+        self.idOlahraga=idOlahraga
+        self.namaMakanan=namaMakanan
+        self.namaOlahraga=namaOlahraga
+        self.jumlahKalori=jumlahKalori
+        self.kaloriTerbakar=kaloriTerbakar
+    
+    # def ubahMakanan(self):
+    #     self.namaMakanan=str(input("Masukkan nama olahraga baru : "))
+    #     self.jumlahKalori=str(input("Masukkan jumlah kalori terbakar baru : "))
+    #     query = "update makanan set namaMakanan ='{}', jumlahKalori = {} where IdMakan = {}".format(self.namaMakanan,self.jumlahKalori, self.idMakan)
+    #     cursor.execute(query)
+    #     conn.commit()
+    
+    # def ubahOlahraga(self):
+    #     self.namaOlahraga=str(input("Masukkan nama olahraga baru : "))
+    #     self.kaloriTerbakar=str(input("Masukkan jumlah kalori terbakar baru : "))
+    #     query = "update olahraga set namaOlahraga ='{}', kaloriTerbakar = {} where IdOlahraga = '{}'".format(self.namaOlahraga,self.kaloriTerbakar, self.idOlahraga)
+    #     cursor.execute(query)
+    #     conn.commit()
+    
+
+def tambahMakanan():
+    namaMakanan=str(input("Masukkan nama makanan : "))
+    jumlahKalori=int(input("Masukkan kalori makanan : "))
+    query="Insert into makanan values('','{}',{})".format(namaMakanan,jumlahKalori)
+    cursor.execute(query)
+    conn.commit()
+
+def MenuMakan():
+    print("Pilih menu dibawah ini")
+    query = "Select * From makanan"
+    cursor.execute(query)
+    dataMakanan=cursor.fetchall()
+    makanan=(dataMakanan[0],dataMakanan[1],dataMakanan[2])
+    inputMakan=[]
+    for i in dataMakanan:
+        print("{}. Nama makanan = {}\n   Jumlah kalori = {} kkal\n".format(i[0],i[1],i[2]))
+        inputMakan.append([i[1],i[2]])
+    print()
+
+def Olahraga():
+    print("Pilih menu dibawah ini")
+    query = "Select * From olahraga"
+    cursor.execute(query)
+    dataOlahraga=cursor.fetchall()
+    olahraga=(dataOlahraga[0],dataOlahraga[1],dataOlahraga[2])
+    inputOlahraga=[]
+    for i in dataOlahraga:
+        print("{}. Nama olahraga = {}\n   Jumlah kalori terbakar = {} kkal\n".format(i[0],i[1],i[2]))
+        inputOlahraga.append([i[1],i[2]])
+    print()
+
+def tambahOlahraga():
+        namaOlahraga=str(input("Masukkan nama olahraga : "))
+        kaloriTerbakar=int(input("Masukkan jumlah kalori terbakar : "))
+        query="Insert into olahraga values('','{}',{})".format(namaOlahraga,kaloriTerbakar)
         cursor.execute(query)
-        data = cursor.fetchall()
-        admin=int(input("Menu Admin \n1. Melihat Paket \n2. Mengubah Paket \n3. Menambah Paket \n4. Menghapus Paket \n5. Keluar \nPilih hal yang ingin diakses : "))
+        conn.commit()
+    
+def programBerjalan():
+    while True:
+        main=int(input("1. Lihat Makanan \n2. Ubah Makanan \n3. Tambahkan Makanan \n4. Lihat Olahraga \n5. Ubah Olahraga \n6.Tambahkan Olahraga \nPilih menu di atas : "))
         print()
-        if admin==1:
-            TampilkanPaket()
-        elif admin==2:
-            pass
-aksesAdmin()
-            
-            # target()
-        # elif admin==3:
-        #     dataAkun=cursor.fetchall()[0]
-        #     user=Pengguna(dataAkun[0], dataAkun[1], dataAkun[2], dataAkun[3], dataAkun[4],dataAkun[5], dataAkun[6], dataAkun[7])
-        #     user.showInfo()
-        #     print()
-        #     menuAkun=int(input("1. Ubah data \n2. Kembali \nPilih Menu : "))
-        #     print()
-        #     if menuAkun==1:
-        #         ubah=int(input("1. Nama \n2. Usia \n3. Jenis kelamin \n4. Berat badan saat ini \n5. Berat badan tujuan \n6. Password \nPilih data yang akan diubah : "))
-        #         user.ubahData(ubah)
-        #     elif menuAkun==2:
-                # Beranda()
-        # else:
-        #     print("Menu yang anda pilih tidak tersedia")
-
-# def ubahNamaPaket():
-#         NamaPaket = str(input("input nama paket yang ingin dirubah : "))
-#         cekPaket = "select NamaPaket from paketdiet where NamaPaket = '{}'".format(NamaPaket)
-#         cursor.execute(cekPaket)
-#         cekPaket = cursor.fetchall()
-#         print("\npaket ditemukan dengan nama :",cekPaket[0][0])
-
-#         adminInput = int(input("\nubah paket diet berdasarkan\n1. Nama Paket\n2. Isi Paket\nMasukkan pilihan  Anda : "))
-#         if adminInput == 1:
-#             try:
-#                 NamaPaketBaru = str(input("Masukkan nama paket baru : "))
-#                 query = "update paketdiet set NamaPaket = '{}' where NamaPaket = '{}'".format(NamaPaketBaru,NamaPaket)
-#                 cursor.execute(query)
-#                 conn.commit()
-#                 print("\nNama Paket berhasil diubah :)\n")
-
-#             except:
-#                 print("\nNama Paket tidak ditemukan!\n")
-# ubahNamaPaket()
-
-def TampilkanPaket():
-    
-    for i in data: 
-        print(i)
-
-    # dataPaket=cursor.fetchall()[0]
-    #         paketdiet=NamaPaket(dataPaket[0], dataPaket[1], dataPaket[2], dataPaket[3])
-    #         paketdiet.showInfo()
-    #         print()
-    
-    
-    
-
-        # elif adminInput == 2:
-        #     try:
-        #         query = "Select * From paketdiet"
-        #         cursor.execute(query)
-        #         data = cursor.fetchall()
-        #         for i in data: 
-        #             print(i)
-        #         ubahIsiPaket = int(input("Masukkan paket yang isinya ingin diubah : "))
-        #         cekPaket = "select * from paketdiet where NamaPaket = '{}'".format(NamaPaket)
-        #         cursor.execute(cekPaket)
-        #         cekPaket = cursor.fetchall()
-        #         print("\npaket ditemukan dengan nama :",cekPaket[0][0])
-
-
-
-        #         query = "update  set penulis = '{}' where judul = '{}'".format(penulisBaru,judulBuku)
-        #         cursor.execute(query)
-        #         conn.commit()
-        #         print("\ndata buku berhasil dirubah :)\n")
-
-        #     except:
-        #         print("\njudul tersebut tidak ada!\n")
-        # elif adminInput == 3:
-        #     try:
-        #         lokasiBaru = str(input("input penulis buku baru : "))
-        #         query = "update buku set lokasi = '{}' where judul = '{}'".format(lokasiBaru,judulBuku)
-        #         cursor.execute(query)
-        #         conn.commit()
-        #         print("\ndata buku berhasil dirubah :)\n")
-
-        #     except:
-        #         print("\njudul tersebut tidak ada!\n")
-
-        # elif adminInput == 4:
-        #     return True
+        if main==1:
+            MenuMakan()
+        elif main==2:
+            MenuMakan()
+            # ubahMakanan()
+        elif main==3:
+            tambahMakanan()
+        elif main==4:
+            Olahraga()
+        elif main==5:
+            Olahraga()
+            # ubahOlahraga()
+        elif main==6:
+            tambahOlahraga()
+        else:
+            print("Menu yang anda pilih tidak tersedia")
+programBerjalan()
