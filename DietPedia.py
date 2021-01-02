@@ -17,7 +17,7 @@ class Pengguna():
         self.listOlahraga=listOlahraga
 
     def showInfoUser(self):
-        print("Nama = {}\nUsia = {}\nJenis kelamin = {}\nTinggi Badan = {}\nBerat Badan Saat Ini = {}\nBerat Badan Impian = {}\nEmail = {}\nPassword = {}".format(self.nama,self.usia,self.jenisKelamin,self.tinggiBadan,self.beratBadanAwal, self.beratBadanImpian, self.email, self.password))
+        print("Nama = '{}'\nUsia = {}\nJenis kelamin = '{}'\nTinggi Badan = {}\nBerat Badan Saat Ini = {}\nBerat Badan Impian = {}\nEmail = '{}'\nPassword = '{}'".format(self.nama,self.usia,self.jenisKelamin,self.tinggiBadan,self.beratBadanAwal, self.beratBadanImpian, self.email, self.password))
     
     def ubahData(self, ubah):
         if ubah==1:
@@ -109,6 +109,9 @@ def Login():
         Email=str(input("Masukkan Email\t\t: "))
         Password=str(input("Masukkan Password\t: "))
         print()
+        if Email==("Admin") and Password==("123456"):
+            from admin import programBerjalanAdmin
+            programBerjalanAdmin()
         query= "select idPengguna from daftar where email='{}' and password='{}'".format(Email,Password)
         cursor.execute(query)
         id=cursor.fetchall()
