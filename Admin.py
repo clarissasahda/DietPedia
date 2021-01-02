@@ -64,9 +64,9 @@ def tambahOlahraga():
         cursor.execute(query)
         conn.commit()
     
-def programBerjalan():
+def programBerjalanAdmin():
     while True:
-        main=int(input("1. Lihat Makanan \n2. Ubah Makanan \n3. Tambahkan Makanan \n4. Lihat Olahraga \n5. Ubah Olahraga \n6.Tambahkan Olahraga \nPilih menu di atas : "))
+        main=int(input("1. Lihat Makanan \n2. Ubah Makanan \n3. Tambahkan Makanan \n4. Lihat Olahraga \n5. Ubah Olahraga \n6. Tambahkan Olahraga \n7. Keluar \nPilih menu di atas : "))
         print()
         if main==1:
             MenuMakan()
@@ -82,6 +82,8 @@ def programBerjalan():
             # ubahOlahraga()
         elif main==6:
             tambahOlahraga()
+        elif main==7:
+            exit()
         else:
             print("Menu yang anda pilih tidak tersedia")
-programBerjalan()
+programBerjalanAdmin()
